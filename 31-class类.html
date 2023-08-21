@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 手机
+  // function Phone(brand, price) {
+  //   this.brand = brand
+  //   this.price = price
+  // }
+  //
+  // Phone.prototype.call = function () {
+  //   console.log(123)
+  // }
+  //
+  // let Apple = new Phone('Apple', 5000)
+  //
+  // console.log(Apple)
+  // Apple.call()
+  
+  class Phone {
+    // 构造器 会自动执行
+    constructor(brand, price) {
+      this.brand = brand
+      this.price = price
+    }
+    
+    // 方法必须使用这个语法,不能用es5的对象语法
+    call() {
+      console.log('call')
+    }
+  }
+  
+  let OnePlus = new Phone('1+', 1999)
+  console.log(OnePlus)
+  
+</script>
+
+</body>
+</html>

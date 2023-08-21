@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    let str = 'js123234523撒哈嗷嗷760嘻嘻嘻'
+    
+    // 正向断言
+    let regex1 = /\d+(?=嘻)/
+    console.log(regex1.exec(str))
+    
+    // 反向断言
+    let regex2 = /(?<=嗷)\d+/
+    console.log(regex2.exec(str))
+
+    
+  </script>
+
+</body>
+</html>

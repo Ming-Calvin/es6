@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 构造函数
+  function Phone() {
+
+  }
+
+  Phone.name = 'xxx'
+  Phone.change = function () {
+    console.log(123)
+  }
+
+  Phone.prototype.size = 10
+
+  let xPhone = new Phone()
+
+  console.log(xPhone)
+  console.log(xPhone.size)  // 10
+  console.log(xPhone.name)  // undefined
+  
+  // 类
+  class CPhone {
+    static name = 'xxx'
+    static change() {
+      console.log(123)
+    }
+  }
+  
+  let yPhone = new CPhone()
+  console.log(yPhone.name, 'yPhone') // undefined
+  
+
+</script>
+</body>
+</html>

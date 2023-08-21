@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 箭头函数声明
+    let fn = () => {
+      // console.log(123)
+    }
+    fn()
+  
+    // 1.this是静态的，this始终指向声明时所在作用域下的值
+    function point1() {
+      console.log(this)
+    }
+    
+    let point2 = () => {
+      console.log(this)
+    }
+    
+    // 直接调用
+    // point1() // Window
+    // point2() // Window
+    
+    // 使用call方法改变this指向
+    let obj = {
+      name: 'xm'
+    }
+    
+    point1.call(obj)  // {name: 'xm'}
+    point2.call(obj)  // Window
+    
+    // 2. 不能作为构造函数的实例
+    let Struct = () => {
+      console.log('xxx')
+    }
+    
+    // let structFun = new Struct()  // 报错： Struct is not a constructor
+    
+    // 3. 不能使用argument参数
+    function arg1(a, b, c) {
+      console.log(arguments)
+    }
+  
+    let arg2 = (a, b, c) => {
+      console.log(arguments)
+    }
+  
+    arg1(1, 2, 3)
+    // arg2(1, 2, 3) // 报错： // arguments is not defined
+    
+    // 4. 箭头函数的简写
+    //  1）如果参数只有一个，可以省略小括号直接写
+    let simply1 = a => {
+      console.log(a + a)
+    }
+    // 2) 如果返回值只有一行，可以省略 大括号 和 return ,结果就是return出的值
+    // let simply2 = (a, b) => a + b
+    let simply2 = (a, b) => console.log(a + b)
+    simply2(1, 2)
+
+    console.log('/*-----------------*/')
+    // 箭头函数没有自己的this,argument,super,new , 他的这些都来自于父定义域
+    // 没有的原因： 因为箭头函数没有[[Constructor]]内部方法槽
+    
+    let objx = {
+      fnx: function fnx(a, b, c) {
+        setTimeout(() => {
+          console.log(this)
+          console.log(arguments)
+        }, 1)
+      }
+    }
+
+
+    objx.fnx(1, 2, 3)  // {fnx: ƒ}  Arguments(3) [1, 2, 3]
+    
+  </script>
+</body>
+</html>

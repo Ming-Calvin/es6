@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 拓展运算符 [...]  将数 组转 换为逗号分割的 参数序列
+    const ARR = [1, 2, 3, 4, 5]
+
+    console.log(...ARR) // 1 2 3 4 5
+    
+    function fn() {
+      console.log(arguments)
+    }
+    fn(ARR) // Arguments [Array(5), callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    fn(...ARR)  // Arguments(5) [1, 2, 3, 4, 5, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+</script>
+
+</body>
+</html>

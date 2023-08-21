@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // 读取对象属性时，如果前面没有，则自动省略
+    
+    function main(config) {
+      // 原本需要一级一级判断
+      // const result = config && config.first && config.first.name
+      // 现在只需要用 ?. 进行
+      // const result = config?.first?.name
+      // 报错
+      const result = config.first.name
+  
+      console.log(result)
+    }
+    
+    main({
+      first: {
+        name: 123
+      }
+    })
+  </script>
+
+</body>
+</html>

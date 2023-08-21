@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    /*
+    * 当 s 标志被设置时：
+    * . 特殊字符将匹配任何字符，包括换行符（\n）和回车符（\r），而不只是匹配除了换行符之外的任何字符。
+    * 在没有 s 标志的情况下，. 会匹配几乎所有的字符，但它不会匹配换行符和回车符。这在多行文本处理时可能会导致问题。
+    * */
+    
+    // dot 除了换行符之外的任意字符
+    let str = `
+    <ul>
+      <li>
+        <a> xm lll </a>
+        <p> time: 1999-08-18 </p>
+      </li>
+      <li>
+        <a> abed </a>
+        <p> time: 1923-01-31 </p>
+      </li>
+    </ul>
+    `
+    // 正则
+    // const reg = /<li>\s+<a>(.*?)<\/a>\s+<p>(.*?)<\/p>/
+    const regex = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs
+    console.log(regex.exec(str))
+    let match
+    while (match = regex.exec(str)) {
+      console.log(match)
+    }
+    
+  </script>
+</body>
+</html>

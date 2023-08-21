@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #ad {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="ad"></div>
+
+  <script>
+    // 1. 点击div两秒后变色
+    // 获取元素
+    const AD = document.getElementById('ad')
+    
+    // 绑定事件
+    AD.onclick = function () {
+      
+      // 保存this的值
+      let _this = this
+      setTimeout(function () {
+        console.log(this, '普通')
+        console.log(_this, '_this')
+      }, 200)
+      
+      setTimeout(() => {
+        console.log(this, '箭头')
+        // this.style.background = 'red'
+      }, 200)
+    }
+    
+    // 2. 从数组中返回偶数的元素
+   const ARR = [1, 6, 9, 10, 100]
+   
+    let result1 = ARR.filter(function (item) {
+      if( item % 2 === 0) {
+        return true
+      } else {
+        return false
+      }
+    })
+    
+    let result2 = ARR.filter(item => item % 2 === 0)
+
+    console.log(result1, 'result1')
+    console.log(result2, 'result2')
+   
+    // 箭头函数适合做与this无关的回调，比如定时器，数组方法的回调
+    //      不适合做与this有关的回调，比如对象的方法，事件回调
+    
+    setTimeout(() => {
+      console.log(this) // Windows，如果在方法、对象内，则为其父作用域的this
+    }, 10)
+    setTimeout(function() {
+      console.log(this) // Windows
+    }, 10)
+    
+    
+    AD.onclick = () => {
+      console.log(this, 'this') // 不是点击的对象，而是Window
+    }
+
+    AD.onclick = function() {
+      console.log(this, 'this') // <div id="ad"></div>
+    }
+    
+    let obj = {
+      name: 'xx',
+      fun: () => {
+        console.log(this) // 不是指向对象，而是Window
+      }
+    }
+  </script>
+  
+</body>
+</html>

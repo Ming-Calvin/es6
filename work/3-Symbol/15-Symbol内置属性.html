@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /*
+    * 1. hasInstance 用于构造函数内
+    * 当有实例判断是否属于构造函数时，自动执行此方法
+    * class X {
+    *   static [Symbol.hasInsctace] = function() {}
+    * }
+    *
+    * 2. isConcatSpreadable 用于数组内
+    * 当数组使用concat进行合并时，数组不会被拆分成一个个项，而是原本的一整个数组
+    * arr[Symbol.isConcatSpreadable] = false
+    * */
+    
+    
+    // .hasInstance 方法
+    // 当其他对象使用instanceof运算符，判断是否为该对象的实例时，会调用这个方法
+    
+    class Person {
+      // 执行时有条件，在判断是否属于类型时自动执行
+      // 可以自己控制类型检测
+      static [Symbol.hasInstance](param) {
+        console.log(param)
+        console.log('用于检测类型')   // 用于检测类型
+        return false
+      }
+    }
+    
+    let o = {}
+
+    console.log(o instanceof Person) //  false  值是Person中 [Symbol.hasInstance]的返回值
+    
+    // .isConcatSpreadable 布尔值，用于表示对象用于Array.prototype.concat()时，是否可以展开
+    
+    const arr = [1, 2, 3]
+    const arr2 = [4, 5, 6]
+    console.log(arr.concat(arr2)) // [1, 2, 3, 4, 5, 6]
+    
+    // 合并时不能被展开
+    arr2[Symbol.isConcatSpreadable] = false
+    
+    console.log(arr.concat(arr2)) // [1, 2, 3, Array(3)]
+    
+  </script>
+</body>
+</html>

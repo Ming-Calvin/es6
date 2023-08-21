@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    const p = new Promise((resolve, reject) => {
+      // 设置状态为失败,设置状态返回值
+      reject('error111')
+    })
+  
+    // 使用catch获取错误返回(catch 是一种语法糖)
+    p.catch(reason => {
+      console.error(reason)
+    })
+  
+    
+  </script>
+</body>
+</html>

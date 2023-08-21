@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // 创建Promise对象
+    const p = new Promise((resolve, reject) => {
+      // resolve('success123')
+      reject('error123');
+    })
+  
+    // await 放在 async 函数中
+    async function fn() {
+      try {
+        let result = await p
+        console.log(result)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  
+    fn()
+  </script>
+
+</body>
+</html>

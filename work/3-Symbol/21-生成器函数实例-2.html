@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // 获取数据 用户数据 订单数据 商品数据
+    function getUser() {
+      setTimeout(() => {
+        let data = '用户数据'
+        // 调用next方法，并将数据传入（此时的数据会成为yield的返回值）
+        iterator.next(data)
+      }, 1000)
+    }
+    
+    function getOrder() {
+      setTimeout(() => {
+        let data = '订单数据'
+        iterator.next(data)
+      }, 1000)
+    }
+
+    function getGoods() {
+      setTimeout(() => {
+        let data = '商品数据'
+        iterator.next(data)
+      }, 1000)
+    }
+    
+    function * gen() {
+      let x = yield getUser()
+      console.log(x)
+      let y = yield getOrder()
+      console.log(y)
+      let z = yield getGoods()
+      console.log(z)
+    }
+  
+    let iterator = gen()
+
+    iterator.next()
+  
+  </script>
+
+</body>
+</html>

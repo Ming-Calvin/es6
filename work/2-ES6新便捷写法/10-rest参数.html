@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // arguments
+    function fn1() {
+      console.log(arguments)  // 类数组
+    }
+    fn1(1, 2, 3, 4, 5)
+    
+    // ...arg
+    function fn2(...arg) {
+      console.log(arg)  // [1, 2, 3, 4, 5] 数组 可以使用filter some every map 方法
+    }
+    fn2(1, 2, 3, 4, 5)
+    
+    // rest参数必须放后面
+    function fn3(a, b, ...arg) {
+      console.log(arg)  // [3, 4, 5]
+    }
+    fn3(1, 2, 3, 4, 5)
+  
+  </script>
+
+</body>
+</html>

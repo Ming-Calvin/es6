@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1]
+  
+  // 数组去重
+  let result = new Set(arr)
+  // set对象转换成数组
+  let resultArray = [...result]
+  console.log(resultArray)  // [1, 2, 3, 4, 5]
+  
+  // 交集
+  let arr2 = [4, 5, 6, 5, 6]
+  // 将一个去重的数组遍历,查看另一个去重的数组中是否有这个元素
+  let result1 = resultArray.filter(item => {
+    let setArr2 = new Set(arr2) // 4, 5, 6
+    
+    // 判断集合中是否有遍历的当前值
+    if(setArr2.has(item)) {
+      return true
+    } else {
+      return false
+    }
+  })
+
+  console.log(result1)  // [4, 5]
+  
+  // 简写形式
+  let result2 = resultArray.filter(item => new Set(arr2).has(item))
+  console.log(result2) // [4, 5]
+  
+  // 并集
+  let union = [...new Set([...arr, ...arr2])]
+  console.log(union)  // [1, 2, 3, 4, 5, 6]
+  
+  // 差集
+  // 对于给定的两个集合，返回一个包含所有存在于第一个集合且不存在于第二个集合的元素的新集合
+  let diff = resultArray.filter(item => !new Set(arr2).has(item))
+  console.log(diff) // [1, 2, 3]
+  
+  
+</script>
+
+</body>
+</html>

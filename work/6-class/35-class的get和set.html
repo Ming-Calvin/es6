@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    class Phone {
+      get price() {
+        console.log('get')
+        return 11
+      }
+    
+      set price(newVal) {
+        console.log('set')
+      }
+    
+    }
+    
+    let s = new Phone()
+    console.log(s.price)  // 11
+    s.price = 12
+    console.log(s.price)  // 11
+  
+  
+    
+  </script>
+
+</body>
+</html>

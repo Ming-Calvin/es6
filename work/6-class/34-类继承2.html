@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  class Phone {
+    constructor(brand, price) {
+      this.brand = brand
+      this.price = price
+    }
+    
+    call() {
+      console.log(123)
+    }
+  }
+  
+  // 继承
+  class smartPhone extends Phone {
+    constructor(brand, price, color, size) {
+      // 继承属性
+      super(brand, price) // 相当于 Phone.call(this, brand, price)
+      
+      this.color = color
+      this.size = size
+    }
+  
+    photo() {
+      console.log('photo')
+    }
+    
+    // 对父类重写
+    call() {
+      console.log('call')
+    }
+  }
+  
+  let x = new smartPhone('x', 123, 'red', 'm')
+  console.log(x)
+  x.call()  // call
+  x.photo()
+</script>
+</body>
+</html>

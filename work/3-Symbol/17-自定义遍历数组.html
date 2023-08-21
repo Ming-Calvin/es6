@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    let school = {
+      name: 'xxx',
+      stus: [
+          "xiaoming",
+          "xiaohong",
+          "xiaoli",
+          "xiaogang"
+      ],
+      // 定义iterator
+      // 2. 定义后报错 Result of the Symbol.iterator method is not an object
+      [Symbol.iterator]: function () {
+        // 如果在next方法中设置index初始值，每次调用next方法都会重置index的值
+        let index = 0
+        // 目的是获取其对象数组中的this，如果在next方法中取this，取到的this是返回的对象
+        let _this = this
+        
+        // 将返回值设置为object
+        // 3. 报错：undefined is not a function
+        return {
+          next: function () {
+            // 4. 当返回值不是对象的时候，报错：Iterator result undefined is not an object
+            // 设置返回值为对象
+            if(index < _this.stus.length) {
+              const result = {value: _this.stus[index], done: false}
+              index++
+              return result
+            } else {
+              return {value: undefined, done: true}
+            }
+            
+          }
+        }
+      }
+    }
+    
+    // 1. 当没有定义iterator时，会报错 school is not iterable
+    for(let i of school) {
+      console.log(i)
+    }
+    
+  </script>
+</body>
+</html>

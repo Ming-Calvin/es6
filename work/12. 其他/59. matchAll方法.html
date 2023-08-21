@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let str = `
+    <ul>
+      <li>
+        <a> xm lll </a>
+        <p> time: 1999-08-18 </p>
+      </li>
+      <li>
+        <a> abed </a>
+        <p> time: 1923-01-31 </p>
+      </li>
+    </ul>
+  `
+  
+  const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg
+
+  // console.log(reg.exec(str))
+  
+  // 调用方法
+  const result = str.matchAll(reg)
+  // for(let v of result) {
+  //   console.log(v)
+  // }
+
+  // 返回一个 数组
+  
+  console.log(...result)
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // 声明一个数组
+    const x = ['x', 'y', 'z', 'o']
+    
+    // for...of 保存的是键值
+    for(let i of x) {
+      console.log(i)  // x y z o
+    }
+
+    // for..in 保存的是键名
+    for(let j in x) {
+      console.log(j)  //  0 1 2 3
+    }
+
+    console.log(x)
+    
+    let iterator = x[Symbol.iterator]();
+    console.log(iterator, 'iterator')
+    
+    /*
+    * 1. 创建一个指针对象，指向当前数据结构的起始位置
+    * 2. 第一次调用对象的next方法，指针自动指向数据结构的第一个成员
+    * 3. 接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员
+    * 4. 每次调用next方法放回一个包含vale和done属性的对象
+    * */
+    
+
+    console.log(iterator.next())  // {value: 'x', done: false}
+    console.log(iterator.next())  // {value: 'y', done: false}
+    console.log(iterator.next())  // {value: 'z', done: false}
+    console.log(iterator.next())  // {value: 'o', done: false}
+    console.log(iterator.next())  // {value: undefined, done: true} done --- 是否完成
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </script>
+</body>
+</html>

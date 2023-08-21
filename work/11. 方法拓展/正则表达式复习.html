@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 1. 创建
+  // 1.1 字面量创建
+  const regex1 = /pattern/;
+  
+  // 1.2 构造函数
+  const regex2 = new RegExp('pattern')
+
+  //  练习题 1：
+  // 请尝试创建一个正则表达式，用字面量方式和构造函数方式分别实现，匹配一个字符串中是否包含 "JavaScript"。
+  const regex3 = /JavaScript/
+  const regex4 = new  RegExp('JavaScript')
+  
+  // 2. 特殊字符
+  /*
+    1.  . 替换任意字符
+    2.  ^ 输入的开始
+    3.  $ 输入的结束
+    4.  * 前面的元素0次或多次
+    5.  + 前面的元素1次或多次
+    6.  ? 前面的元素0次或1次
+  * */
+
+  const regex5 = /^a.b$/
+  console.log(regex5.test('asb')) // true
+  console.log(regex5.test('ab')) // false
+  
+  const regex6 = /^ab*c$/
+  console.log(regex6.test('ac'))  // true
+  console.log(regex6.test('abc'))  // true
+  console.log(regex6.test('abbbbc'))  // true
+  console.log(regex6.test('abcc'))  // false
+
+  // 练习题 2：
+  // 请编写一个正则表达式，要求匹配以 "A" 开始，后面跟着任意数量（至少一个）的小写字母，然后以 "Z" 结束的字符串。
+  const regex7 = /^A[a-z]+Z$/
+  
+  // 3. 字符类
+  // 3.1 [] 代表匹配里卖弄任意一个字符
+  const regex8 = /[abc]/
+  
+  // 3.2 匹配范围
+  /*
+  * 1. [0-9]  所有数字
+  * 2. [a-z]  所有小写
+  * 3. [A-Z]  所有大写
+  * 4. [a-zA-z] 所有大小写
+  * */
+  
+  const regex9 = /[0-9]/
+  
+  // 3.3 预定义字符类
+  /*
+  * \d 任意数字
+  * \w 任意字母，数字，下划线
+  * \s 任意空白符（空格，制表，换页）
+  * */
+
+  // 练习题3：
+  // 现在，试着写一个正则表达式，它匹配一个字符串，条件是该字符串：
+  // 以一个大写字母开始
+  // 后面跟着至少一个小写字母
+  // 最后是一个数字
+  
+  const regex10 = /^[A-Z][a-z]+\d$/
+  
+  // 4. 量词
+  /*
+  * 1.  * 前面的元素0次或多次
+  * 2.  + 前面的元素1次或多次
+  * 3.  ? 前面的元素0次或1次
+  * 4.  {n} 正好n次
+  * 5.  {n,}  至少n次
+  * 6.  {n,m} 至少n次，最多m次
+  * */
+
+  // 练习题4：
+  // 请编写一个正则表达式，要求匹配一个字符串，该字符串满足以下条件：
+  //
+  // 开始与结束都是大写字母
+  // 中间是1到3个数字
+  
+  const regex11 = /^[A-Z]\d{1,3}[A-Z]$/
+  
+  // 5. 贪婪匹配 和 惰性匹配
+  // 跟着 .exec()方法一起使用的
+
+  const str1 = 'abcabcbc'
+  
+  // 5.1 贪婪匹配 -- 获取a到c最长的字符
+  const regex12 = /a.*c/
+  console.log(regex12.exec(str1))  // ["abcabcbc"]
+  
+  // 5.2 惰性匹配 -- 获取a到c最短的字符
+  const regex13 = /a.*?c/
+  console.log(regex13.exec(str1))  // ["abc"]
+
+  // 练习题5：
+  // 假设我们有以下的一段文本：
+  //
+  // <div>This is the first div</div><div>This is the second div</div>
+  // 请编写一个正则表达式，使用惰性匹配来匹配每一个 <div> 元素（包括开始和结束标签）以及它们之间的内容。
+  
+  const str2 = '<div>This is the first div</div><div>This is the second div</div>'
+  const regex14 = /<div>.*?<\/div>/g
+  let match
+  while ((match = regex14.exec(str2)) !== null) {
+    console.log(match[0], 'match');
+  }
+
+  // 练习题5：
+  // 假设我们有以下的一段文本："apple pie [123] [456] [789]"
+  //
+  // 任务：
+  //
+  // 贪婪匹配： 编写一个正则表达式，提取第一个 [ 到最后一个 ] 之间的内容（包括这两个字符）。
+  // 惰性匹配： 修改你的正则表达式，使它只提取每一个单独的 [...] 格式的内容。
+  // 期望的输出：
+  //
+  // 对于贪婪匹配：[123] [456] [789]
+  // 对于惰性匹配：
+  //     [123]
+  //     [456]
+  //     [789]
+  // 请在你的代码中使用正则表达式的 exec 方法或字符串的 match 方法（或其他你熟悉的方法）来提取这些信息。
+  
+  const str3 = "apple pie [123] [456] [789]"
+  const regex15 = /\[.*\]/
+  console.log(regex15.exec(str3)[0])
+  
+  const regex16 = /\[.*?\]/g
+  let match2
+  while((match2 = regex16.exec(str3)) != null) {
+    console.log(match2[0])
+  }
+  
+  // 6. 分组和捕获
+  // 6.1 分组
+  const regex17 = /(abc){3}/
+  console.log(regex17.test('ab')) // false
+  console.log(regex17.test('abc')) // false
+  console.log(regex17.test('abcabcabc')) // true
+  console.log(regex17.test('abcabcabcabc')) // true
+  
+  // 6.2 捕获
+  const regex18 = /(\d{2})-(\d{3})-(\d{4})/
+  let result1 = regex18.exec('12-123-1234')
+  console.log(result1) // ["12-123-1234","12","123","1234"]
+  
+  let result2 = regex18.exec('12-12-12')
+  console.log(result2)  // null
+
+  // 练习题：
+  // 假设我们有以下的一段文本：
+  //
+  // John Smith (30 years) - New York, Kate Johnson (43 years) - Los Angeles
+  // 请编写一个正则表达式，捕获每个人的：
+  //
+  // 全名（名和姓），这将是捕获组1。
+  // 年龄，这将是捕获组2。
+  // 城市，这将是捕获组3。
+  
+  let str4 = 'John Smith (30 years) - New York, Kate Johnson (43 years) - Los Angeles'
+  let regex19 = /(\w+ \w+) \((\d+) years\) - (\w+ \w+)/g
+  let match3
+  while((match3 = regex19.exec(str4)) != null) {
+    console.log(match3)
+  }
+
+  // 练习题：
+  // 假设我们有以下的一段文本：
+  //
+  // Peter Parker: peter.parker@mail.com, Bruce Wayne: bruce.wayne@mail.com
+  // 任务：
+  //
+  // 请编写一个正则表达式，捕获每个人的：
+  //
+  // 全名（名和姓），这将是捕获组1。
+  // 电子邮件地址，这将是捕获组2。
+  let str5 = 'Peter Parker: peter.parker@mail.com, Bruce Wayne: bruce.wayne@mail.com'
+  let regex20 = /(\w+ \w+): (\w+\.\w+)@(\w+\.\w+)/g
+  
+  let match4
+  while ((match4 = regex20.exec(str5)) !== null) {
+    console.log(match4[1])
+    console.log(match4[2])
+  }
+  
+  // 7. 向前查找和向后查找
+  
+  // 7.1 ?= 后面是否有指定字段 ; != 后面是否没有指定字段
+  
+  let regex21 = /xm (?=xh)/
+
+  console.log(regex21.test('xm xh'))//true
+  console.log(regex21.test('xmxh'))//false
+  console.log(regex21.test('xm xg'))//false
+  
+  // 7.2 ?<= 前面是否有指定字段 ; !<= 前面是否没有指定字段
+  let regex22 = /(?=xm) xh/
+  console.log(regex21.test('xm xh'))//true
+  console.log(regex21.test('xmxh'))//false
+  console.log(regex21.test('xm xg'))//false
+
+  // 练习题：
+  // 假设我们有以下的一段文本：
+  //
+  // $20, £30, €25
+  //
+  // 任务：
+  // 请编写一个正则表达式，捕获每个金额的数值部分，但只有在它前面是美元符号（$）时。
+  //
+  // 期望的输出：20
+  
+  let str6 = '$20, £30, €25'
+  
+  let regex23 = /(?<=\$)(\d*),/g
+  let match5
+  while ((match5 = regex23.exec(str6))) {
+    console.log(match5)
+  }
+  
+  // 8. 边界匹配器
+  // 8.1 单词边界：\b
+  let regex24 = /\bword\b/
+  console.log(regex24.test('wor123wor')) // false
+  console.log(regex24.test('word123word')) // false
+  console.log(regex24.test('word')) // true
+  
+  // 8.2 字符串开始和结束：^ 和 $
+
+  // 练习题：
+  // 假设我们有以下的一段文本：
+  //
+  // apple
+  // banana
+  // pineapple
+  // grape
+  //
+  // 任务：请编写一个正则表达式，匹配以 "apple" 结尾的行。
+  let str7 = 'apple\n' +
+      'banana\n' +
+      'pineapple\n' +
+      'grape\n'
+  
+  let regex25 = /.*apple$/gm
+  
+  let match6
+  while((match6 = regex25.exec(str7)) != null) {
+    console.log(match6[0])
+  }
+  
+  // 9.非捕获组和命名捕获组
+  // 9.1 非捕获组：(?:...)
+  const regex26 = /(?:ab|cd|ef) \d+/
+  console.log(regex26.test('ab 3')) // true
+  console.log(regex26.test('abc 3'))  // false
+  console.log(regex26.exec('ab 3')) // 0:"ab 3" groups:undefined 不会建立新的分组
+  
+  // 9.2 命名捕获组：(?<name>...)
+  const regex27 = /(?<name>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
+  const match7 = regex27.exec('2023-02-18')
+  
+  if(match7 != null) {
+    console.log(match7.groups.name) // 2023
+    console.log(match7.groups.month)  // 2
+    console.log(match7.groups.day)  // 2
+  }
+  
+  // 10.使用标记
+  // 10.1 全局搜索（Global）：g
+  // 不添加 g 标志时，正则表达式只会查找第一个匹配项。
+  // 添加 g 标志后，正则表达式会查找所有的匹配项。
+
+  // 10.2 不区分大小写（Case Insensitive）：i
+  // 不添加 i 标志时，正则表达式的匹配是区分大小写的。
+  // 添加 i 标志后，正则表达式的匹配不区分大小写。
+
+  // 10.3 多行模式（Multiline）：m
+  // 不添加 m 标志时，^ 和 $ 只匹配整个字符串的开始和结束。
+  // 添加 m 标志后，^ 和 $ 也匹配每一行的开始和结束。
+  
+  // 11.  替换和字符串操作
+  // 11.1 使用 replace() 进行字符串替换
+  let str8 = 'xm, xh, xg'
+  console.log(str8.replace('xm', 'xx')) // xx, xh, xg
+  
+  // 11.2 使用正则表达式和捕获组进行复杂替换 第二个参数（替换字符串）中使用 $n
+  let str9 = '2023-08-16'
+  console.log(str9.replace(/(\d{4})-(\d{2})-(\d{2})/, '$3/$2/$1'))
+  
+  // 11.3 使用函数作为替换参数
+  let str10 = 'a 2 b 3'
+  console.log(str10.replace(/\d+/g, (match) => {
+    return parseInt(match) * 2
+  }))
+</script>
+</body>
+</html>

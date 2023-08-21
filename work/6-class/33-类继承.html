@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function Phone(brand, price) {
+    this.brand = brand
+    this.price = price
+  }
+  
+  Phone.prototype.call = function () {
+    console.log(123)
+  }
+  
+  function smartPhone(brand, price, color, size) {
+    // call 方法用来调用一份方法，并且修改this的指向， this后面的为调用时的参数值
+    Phone.call(this, brand, price)
+    
+    this.color = color
+    this.size = size
+  }
+  
+  // 设置原型链，将方法继承
+  // smartPhone.prototype = new Phone;
+  // Object.create函数创建一个新对象，并为这个新对象设置指定的原型
+  smartPhone.prototype = Object.create(Phone.prototype)
+  smartPhone.prototype.constructor = Phone
+  
+  // 声明子类方法
+  smartPhone.prototype.photo = function () {
+    console.log(111)
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

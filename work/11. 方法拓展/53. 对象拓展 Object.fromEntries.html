@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 二维数组
+  const result = Object.fromEntries([
+      ['name', 'age'],
+      ['xm', '19', 'abc']
+  ])
+
+  console.log(result)
+  // {
+  //   "name": "age",
+  //     "xm": "19"
+  // }
+  
+  // Map
+  const m = new Map()
+  m.set('name', 'xm')
+  console.log(Object.fromEntries(m));
+
+  // 对象转换成条目
+  const arr = Object.entries({
+    name: 'xm'
+  })
+  console.log(arr)
+</script>
+</body>
+</html>

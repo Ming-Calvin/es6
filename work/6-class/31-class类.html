@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+  // // es5
+  // function Phone(brand, price) {
+  //   this.brand = brand
+  //   this.price = price
+  // }
+  //
+  // // 添加方法
+  // Phone.prototype.call = function () {
+  //   console.log('call')
+  // }
+  //
+  // // 实例化对象
+  // let iphone = new Phone('xx', 123)
+  // iphone.call()
+  //
+  
+  class Phone {
+    // 构造器
+    constructor(brand, price) {
+      this.brand = brand
+      this.price = price
+    }
+    
+    // 方法不能使用es5的 对象：方法
+    call() {
+      console.log(this.brand + ":" + this.price)
+    }
+  }
+  
+  let iphone = new Phone('iphone', 100)
+
+  console.log(iphone)
+  iphone.call()
+  
+  
+  </script>
+</body>
+</html>

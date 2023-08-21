@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // set集合 不会包含相同的元素
+    
+    // 1. 创建
+    // 单纯创建
+    let s = new Set()
+    console.log(s, typeof s)  // Set(0) {size: 0} , 'object'
+    // 数组作为参数 (会自动去除数组中的重复部分)
+    let set = new Set(['xiaoming', 'xiaohong', 'xiaogang', 'xiaoming'])
+    console.log(set)  // Set(3) {'xiaoming', 'xiaohong', 'xiaogang'}
+    
+    // 2. 添加元素
+    set.add('xiaoli')
+    console.log(set)  // Set(4) {'xiaoming', 'xiaohong', 'xiaogang', 'xiaoli'}
+  
+    // 2. 删除元素
+    set.delete('xiaoming')
+    console.log(set)  // Set(3) {'xiaohong', 'xiaogang', 'xiaoli'}
+    
+    // 3.检测是否有某个元素
+    console.log(set.has('xiaohong'))  //true
+    console.log(set.has('xiaozhi')) // false
+    
+    // 4. for-of遍历
+    for(let i of set) {
+      console.log(i)  // xiaohong xiaogang xiaoli
+    }
+
+
+
+  </script>
+
+</body>
+</html>

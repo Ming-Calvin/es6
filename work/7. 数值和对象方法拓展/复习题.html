@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 编写一个函数 areFloatsEqual(a, b)，该函数接受两个浮点数作为参数，并使用 Number.EPSILON 来确定这两个浮点数是否相等。函数应返回 true 或 false。
+    function areFloatsEqual(a, b) {
+      if(Math.abs(a - b) <= Number.EPSILON) {
+        return true
+      } else {
+        return false
+      }
+    }
+
+    // 编写一个函数 convertToBinary(decimal)，该函数接受一个十进制整数作为参数，并返回它的二进制字符串表示。
+    function convertToBinary(decimal) {
+      let arr = []
+      
+      for(let i = 0; decimal > 0; i++) {
+        arr[i] = decimal % 2
+        decimal = parseInt((decimal / 2).toString())
+      }
+      
+      return '0b' + arr.reverse().join('')
+    }
+
+    // 编写一个函数 isNumberFinite(number)，该函数接受一个参数，并使用 Number.isFinite() 来检查该数是否是有限的。函数应返回 true 或 false。
+    function isNumberFinite(number) {
+      return Number.isFinite(number)
+    }
+
+    // 编写一个函数 mergeObjects(...objects)，该函数接受多个对象作为参数，并使用 Object.assign() 来将它们合并为一个新对象。函数应返回合并后的新对象。
+    function mergeObjects(...objects) {
+      let obj = {}
+      for (let i = 0 ; i < objects.length; i++) {
+        Object.assign(obj, objects[i])
+      }
+      
+      return obj
+    }
+
+    // 编写一个函数 areValuesIdentical(val1, val2)，该函数接受两个参数，并使用 Object.is() 来检查这两个值是否完全相同。函数应返回 true 或 false。
+    function areValuesIdentical(val1, val2) {
+      return Object.is(val1, val2)
+    }
+    
+  </script>
+
+</body>
+</html>

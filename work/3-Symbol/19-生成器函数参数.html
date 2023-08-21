@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    function * gen(arg) {
+      console.log(arg, 'arg')
+      let x = yield 'first'
+      console.log(x, 'x')
+      let y = yield 'second'
+      console.log(y, 'y')
+      let z = yield 'tree'
+      console.log(z, 'z')
+    }
+    
+    // 整体参数
+    let x = 'AAA'
+    let iterator = gen(x)  // AAA arg
+    // 传递部分实参
+    console.log(iterator.next('BBB')) // {value: 'first', done: false}
+    // 第二个next传递的语句将成为第一个语句的返回值结果
+    console.log(iterator.next('CCC')) // CCC x // {value: 'second', done: false}
+    // 第三个next传递的语句成为第二个的返回值结果
+    console.log(iterator.next('DDD')) // DDD y // {value: 'second', done: false}
+    // 第四个next传递的语句成为第三个的返回值结果
+    console.log(iterator.next('EEE')) // EEE z // {value: undefined, done: true}
+    console.log(iterator.next('FFF')) // {value: undefined, done: true}
+    
+    // 迭代器加法
+    function * numberGenerator() {
+      const x = yield 'Please provide a value for "x"'
+      const y = yield 'Please provide a value for "y"'
+      yield x + y
+    }
+  
+    const generator = numberGenerator()
+
+
+    console.log('***************************')
+    
+    console.log(generator.next()) // {value: 'Please provide a value for "x"', done: false}
+    console.log(generator.next(2)) // {value: 'Please provide a value for "y"', done: false}
+    console.log(generator.next(3)) // {value: 5, done: false}
+    console.log(generator.next()) // {value: undefined, done: true}
+    
+  
+  </script>
+
+</body>
+</html>

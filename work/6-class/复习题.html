@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 问题：
+  // 定义一个名为Car的类，其有两个属性：brand（品牌）和year（年份）。此类还应该有一个方法displayInfo，输出"This is a [brand] from [year]."。
+  
+  class Car {
+    constructor(brand, year) {
+      this.brand = brand
+      this.year = year
+      let _speed = 0  // 在构造函数内部定义私有属性 _speed
+    }
+  
+    displayInfo() {
+      return "This is a " + this.brand + " from" + this.year + "."
+    }
+  
+    // 问题：
+    // 在上述Car类中，添加一个静态方法isCar，它接受一个对象作为参数。如果对象是Car的一个实例，它返回true，否则返回false。
+    static isCar(obj) {
+      if (obj instanceof Car) {
+        return true
+      } else {
+        return false
+      }
+    }
+  
+    // 问题
+    // 在Car类中添加一个私有属性_speed。然后使用get和set访问器来访问和修改这个属性，但确保速度不能为负值。如果试图设置一个负的速度，输出错误消息并保持原始速度。
+    get speed() {
+      return this._speed
+    }
+  
+    set speed(newVal) {
+      if (newVal > 0) {
+        this._speed = newVal
+      } else {
+        console.error("Speed cannot be negative.")
+      }
+    }
+  }
+
+  // 问题：
+  // 基于Car类，创建一个子类ElectricCar，它有一个额外的属性batteryLife（电池寿命）。确保在创建ElectricCar的实例时，可以同时设置brand、year和batteryLife的值。
+  class ElectricCar extends Car {
+    constructor(brand, year, batteryLife) {
+      super(brand, year)
+    
+      this.batteryLife = batteryLife
+    }
+  }
+  
+  
+</script>
+</body>
+</html>

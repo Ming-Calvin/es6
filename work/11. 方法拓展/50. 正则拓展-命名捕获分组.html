@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 声明一个字符串
+  let str = '<a href="www.baidu.com">xm</a>'
+  
+  // 提取url 和 标签内的文本
+  let regex = /<a href="(.*)">(.*)<\/a>/
+  
+  // 执行
+  const result = regex.exec(str)
+
+  console.log(result)
+  /*
+    [
+      "<a href=\"www.baidu.com\">xm</a>",
+      "www.baidu.com",
+      "xm"
+    ]
+  * */
+</script>
+</body>
+</html>

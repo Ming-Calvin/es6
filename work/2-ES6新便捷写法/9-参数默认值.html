@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // 默认给函数参数初始值
+    // 形参初始值，一般有默认值的参数要放在后面
+    function fn(a, b, c=10) {
+      console.log(a + b + c)
+    }
+
+    fn(1, 2, 3) // 6
+    fn(1, 2)  // 13
+    
+    // 与解构赋值一起使用
+    function net({ port, params, data, host='127.0.0.1' }) {
+      console.log(host, port, params, data)
+    }
+
+    let netObj = {
+      // host: 'localhost',
+      port: 3366,
+      params: { x: 1 },
+      data: { name: 'xx' }
+    }
+
+    net(netObj)
+  
+  </script>
+
+</body>
+</html>

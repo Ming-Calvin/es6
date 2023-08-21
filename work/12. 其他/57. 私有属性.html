@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  class School {
+    // 公有属性
+    name
+    // 私有属性
+    #adress
+    
+    constructor(name, adress) {
+      this.name = name
+      this.#adress = adress
+    }
+    
+    look() {
+      return this.#adress
+    }
+  }
+  
+  const xx = new School('xx', 'aa')
+
+  console.log(xx.name)
+  // console.log(xx.#adress) // Private field '#adress' must be declared in an enclosing class
+
+  console.log(xx.look())  // aa
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // 声明promise对象
+    const p1 = new Promise(((resolve, reject) => {
+      resolve('ok1')
+    }))
+
+    const p2 = new Promise(((resolve, reject) => {
+      // resolve('ok2')
+      reject('error')
+    }))
+
+    // Promise.allSettled 接受多个promise参数，返回多个Promise参数的状态
+    const result1 = Promise.allSettled([p1, p2])
+    console.log(result1)
+    /*
+    * 返回的状状态如果有拒绝则返回拒绝
+    *
+    * 返回的结果是一个数组，包含两个Promise对象的结果
+    * */
+
+    // Promise.all 接受多个promise参数，如果其中有一个Promise是拒绝的，则返回失败
+    const result2 = Promise.all([p1, p2])
+    
+    
+  </script>
+
+</body>
+</html>

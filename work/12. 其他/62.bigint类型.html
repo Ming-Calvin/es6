@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let n = 123n;
+  console.log(n)  // 123n
+  console.log(typeof n) // bigint
+  
+  // 大整形用于超过最大安全数的运算
+  let max = Number.MAX_SAFE_INTEGER
+  console.log(max + 1)  // 9007199254740992
+  // 超过上限不添加
+  console.log(max + 2)  // 9007199254740992
+  
+  let maxN = BigInt(max)
+  console.log(maxN)
+  // console.log(maxN + 1) // 报错： Cannot mix BigInt and other types, use explicit conversions
+  console.log(maxN + BigInt(1)) // 9007199254740992n
+  console.log(maxN + BigInt(2)) // 9007199254740993n
+</script>
+</body>
+</html>

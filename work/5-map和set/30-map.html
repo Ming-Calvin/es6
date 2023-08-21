@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 声明 Map
+  let m = new Map()
+  
+  // 添加元素
+  m.set('name', 'xiaoming')
+  m.set('change', function () {
+    console.log(123)
+  })
+  
+  let key = {
+    have: 'money'
+  }
+  m.set(key, ['$', '￥'])
+  console.log(m, 'm')  // Map(3) {'name' => 'xiaoming', 'change' => ƒ, {…} => Array(2)} 'm'
+
+
+  // 长度
+  console.log(m.size)
+  
+  // 删除
+  m.delete('name')
+  console.log(m, 'm') // Map(2) {'change' => ƒ, {…} => Array(2)} 'm'
+  
+  // 获取
+  console.log(m.get(key)) // ['$', '￥']
+
+  // 遍历
+  for(let i of m) {
+    console.log(i, 'i') // ['change', ƒ]  // [{…}, Array(2)]
+  }
+  
+  // 清空
+  m.clear()
+  console.log(m)  // Map(0) {size: 0}
+  
+  
+</script>
+</body>
+</html>

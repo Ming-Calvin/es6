@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 判断两个数是否相等  Object.is 与===相同，特殊的地方：可以判断NaN
+  console.log(Object.is(120, 120))  // true
+  console.log(Object.is(NaN, NaN))  // true
+  console.log(NaN === NaN)  // false
+  
+  // Object.assign 数组合并
+  let obj1 = {
+    name: 'xx',
+    age: 1,
+    text: 'aj'
+  }
+
+  let obj2 = {
+    name: 'ss',
+    age: 123,
+    text1: 'cd',
+    text2: 'cv'
+  }
+
+  console.log(Object.assign(obj1, obj2)) // 后面的覆盖前面的
+
+  // {
+  //    "name": "ss",
+  //    "age": 123,
+  //    "text": "aj",
+  //    "text1": "cd",
+  //    "text2": "cv"
+  // }
+  
+  // Object.setPrototypeOf 设置原型对象
+  const school = {
+    name: 'abc'
+  }
+  
+  const city = {
+    arr: [1, 2, 3, 4]
+  }
+  
+  // 将参数2 设置为 参数1 的原型
+  Object.setPrototypeOf(school, city)
+  console.log(Object.getPrototypeOf(school))  // {arr: Array(4)}
+  console.log(school) // {name: 'abc'}
+</script>
+</body>
+</html>

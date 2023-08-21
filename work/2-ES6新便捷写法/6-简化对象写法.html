@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    // es6中允许大括号中直接写入变量和函数，作为对象的属性和方法
+    let name = 'xm'
+    let age = 12
+    let eat = function () {
+      console.log('eat')
+    }
+    
+    let obj = {
+      name,
+      age,
+      eat,
+      // 方法的简化写法
+      have() {
+        console.log('have fun')
+      }
+    }
+
+    console.log(obj)
+    obj.eat()
+  </script>
+
+</body>
+</html>

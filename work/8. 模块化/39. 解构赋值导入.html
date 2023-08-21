@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script type="module">
+  import {name, show} from "./src/m1.js";
+  console.log(name)
+  console.log(show)
+  
+  import {name as school, job} from "./src/m2.js";
+  console.log(school)
+  console.log(job)
+  
+  import {default as m3} from "./src/m3.js"
+  console.log(m3)
+
+</script>
+
+</body>
+</html>

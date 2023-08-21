@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // js允许用一定的模式，从数组和对象中提取值赋给变量
+  
+  // 数组的解构
+  const Arr1 = [1, 2, 3, 4, 5]
+  let [a, b, c, d] = Arr1
+
+  console.log(a, b, c, d) // 1 2 3 4
+  
+  // 对象的结构
+  const PEOPLE = {
+    name: 'xm',
+    age: 18,
+    say: function () {
+      console.log('say Hello')
+    }
+  }
+  
+  let { name, age, say } = PEOPLE
+  console.log(name, age, say) // xm 18 ƒ () {
+                              //            console.log('say Hello')
+                              //            }
+  say() // say Hello
+  
+  let { abc } = PEOPLE
+  console.log(abc)  // undefined
+  
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    const x = {
+      name: ['xm', 'xh', 'xg'],
+      age: [10, 20, 30],
+      city: ['as', 'bs', 'cs'],
+      
+      get name() {
+        return 123
+      },
+      set name(newVal) {
+        name = newVal
+      }
+    }
+    
+    // 获取对象身上所有的键
+    console.log(Object.keys(x))
+    // 获取对象身上所有的值
+    console.log(Object.values(x))
+    // entries 结果是一个数组 [[键名 ， 键值数组],[键名 ， 键值数组]...]
+    console.log(Object.entries(x))
+    let m = new Map(Object.entries(x))
+    console.log(m.get('name'))
+    
+    // 对象属性的描述对象
+    const descriptors= Object.getOwnPropertyDescriptors(x)
+    // 属性描述
+    console.log(descriptors)
+    /*
+    * 1. value:[10, 20, 30] -- 属性的值
+    * 2. writable:true -- 是否可写
+    * 3. enumerable:true -- 是否可以枚举
+    * 4. configurable:true -- 是否可以被删除
+    * */
+
+    console.log(descriptors.name)
+    /*
+    * 1. configurable:true
+    * 2. enumerable:true
+    * 3. get:ƒ name() // 读取函数时的函数
+    * 4. set:ƒ name(newVal) // 设置函数时的函数
+    * */
+
+    const obj = Object.create(null, {
+      name: {
+        // 设置值
+        value: 'xxx',
+        // 属性特性
+        writable: true,
+        enumerable: true,
+        configurable: true
+      }
+    })
+    
+    
+    
+    
+    
+    
+  </script>
+
+</body>
+</html>

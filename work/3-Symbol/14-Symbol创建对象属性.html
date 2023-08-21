@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /*
+    * Symbol给对象添加方法
+    * 1. 先创建变量，再利用Symbol的地址值当作函数名
+    * let x = Symbol('x')
+    * obj[x] = function () {}
+    *
+    * 2.直接用Symbol的地址值当作函数名
+    * obj = {
+    *   [Symbol('x')] : function() {}
+    * }
+    *
+    * */
+    
+    
+    // Symbol给对象添加独一无二的属性和方法
+    let obj = {
+      name: 'xx',
+      method: {
+        up: function () {
+          console.log(123)
+        },
+        down: function () {
+          console.log(456)
+        }
+      }
+    }
+
+    let methods = {
+      up: Symbol(),
+      down: Symbol()
+    }
+
+    obj[methods.up] = function () {
+      console.log('methods.up')
+    }
+
+    obj[methods.down] = function () {
+      console.log('methods.down')
+    }
+
+    console.log(obj)
+
+    obj.method.up()
+    obj[methods.up]()
+
+    let obj1 = {
+      name: 'xm',
+      [Symbol('up')]: function () {
+        console.log('[Symbol(\'up\')]')
+      },
+      [Symbol('down')]: function () {
+        console.log('[Symbol(\'up\')]')
+      }
+    }
+
+    console.log(obj1)
+    
+  
+  </script>
+</body>
+</html>

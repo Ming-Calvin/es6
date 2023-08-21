@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+    /*
+    * 1. 创建方式
+    *   1) let x = Symbol('x')
+    *   2) let x = Symbol.for('x')
+    *
+    * 2. 不参与运算
+    *   let result = x + 100 //报错：Cannot convert a Symbol value to a number
+    *
+    * */
+    
+    
+    // Symbol 是一种类似字符串的唯一的变量
+    let a = Symbol()
+    console.log(a, typeof a)  // Symbol() 'symbol'
+    
+    let x1 = Symbol('x')
+    let x2 = Symbol('x')
+    console.log(x1, x2) // Symbol(x) Symbol(x)
+    // symbol 在堆中创建变量，并把地址值赋给栈中的变量名，这个地址是唯一的，除非拿变量去获取，所以两个Symbol创建的变量不相等
+    console.log(x1 == x2) // false
+    
+    // 用新的变量获取symbol创建的变量
+    let b = x1
+    console.log(b)  // Symbol(x)
+    
+    // 不能与其他数据进行运算
+    
+    // let result = a + 100   // Cannot convert a Symbol value to a number
+    // let result = a > 100   // Cannot convert a Symbol value to a number
+    // let result = a + '100' // Cannot convert a Symbol value to a string
+    
+    let y1 = Symbol.for('y')
+    let y2 = Symbol.for('y')
+
+    // 使用Symbol创建时，第二次创建会查询是否有一样的Symbol值，如果有，新的变量则会指向它，否则返回一个新的symbol
+    console.log(y1, y2)
+    console.log(y1 === y2)  // true
+    
+    
+  </script>
+
+</body>
+</html>
